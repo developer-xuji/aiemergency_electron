@@ -15,6 +15,7 @@ import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import { UNACTIVE_WINDOW_HEIGHT, UNACTIVE_WINDOW_WIDTH } from './constants';
 
 export default class AppUpdater {
   constructor() {
@@ -69,12 +70,20 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: UNACTIVE_WINDOW_WIDTH,
+    height: UNACTIVE_WINDOW_HEIGHT,
+    x: 0,
+    y: 0,
+    opacity: 0.1,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
+    autoHideMenuBar: true,
+    alwaysOnTop: true,
+    frame: false,
+    minimizable: false,
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
@@ -91,6 +100,7 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
+    mainWindow.webContents.closeDevTools();
   });
 
   mainWindow.on('closed', () => {
