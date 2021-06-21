@@ -14,7 +14,6 @@ import path from 'path';
 import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
 import { UNACTIVE_WINDOW_HEIGHT, UNACTIVE_WINDOW_WIDTH } from './constants';
 
 export default class AppUpdater {
@@ -100,15 +99,12 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
-    mainWindow.webContents.closeDevTools();
+    // mainWindow.webContents.closeDevTools();
   });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
 
   // Open urls in the user's browser
   mainWindow.webContents.on('new-window', (event, url) => {
