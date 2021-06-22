@@ -31,6 +31,7 @@ const setAlert = async (
       stage,
       utcTime,
     };
+    console.log(data);
 
     return await fetchData(url, 'PUT', data);
   } catch (error: any) {

@@ -15,12 +15,14 @@ const Layout = styled.div`
 `;
 const OptionButton = styled.button`
   height: 20vh;
+  font-size: 20px;
   text-align: center;
   background-color: ${(props) => props.color};
+  color: ${(props) => (props.color === 'white' ? 'black' : 'white')};
 `;
 
 const EmergencyPage: React.ComponentType = () => {
-  const { classList, switchToEmergency } =
+  const { classList, switchToEmergency, switchWindow } =
     React.useContext(EmergencyPageContext);
 
   const currentClass = classList.length === 0 ? null : classList[0];
@@ -30,6 +32,7 @@ const EmergencyPage: React.ComponentType = () => {
       setAlert(BACKEND_URL + ALERT_URL, RED, currentClass.id, text, stage);
     }
     switchToEmergency(false);
+    switchWindow();
   };
 
   const options = [

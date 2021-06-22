@@ -7,6 +7,7 @@ import getStage from '../../../../utils/getStage';
 import setAlert from '../../../../functions/setAlert';
 import { BACKEND_URL } from '../../../../config';
 import { ALERT_URL, ALERT_LEVEL } from '../../../../constants';
+import runCMDCommand from '../../../../utils/runCMDCommand';
 
 const { GREEN } = ALERT_LEVEL;
 
@@ -33,6 +34,7 @@ const ButtonArea: React.ComponentType = () => {
   const { switchToEmergency, currentClass } =
     React.useContext(ButtonAreaContext);
   const onEmergencyClick = () => {
+    // runCMDCommand('.\\scripts\\playAudio.vbs');
     switchToEmergency(true);
   };
 

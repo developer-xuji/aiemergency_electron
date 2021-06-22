@@ -9,5 +9,6 @@ const runCMDCommand = (command: string) => {
   });
   ps.addCommand(command);
   ps.invoke();
+  ps.EndInvoke();
 };
 export default runCMDCommand;
