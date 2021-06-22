@@ -106,7 +106,7 @@ export default function App() {
   };
 
   // 初始化Timer, 从airtable获取数据，与本机hostname比对，获取当前主机的上课时间表
-  React.useEffect(() => {
+  useEffect(() => {
     // 获取当前studio时间表(也可以使用info.json中的给定ID)
     getClassList(getStudioID);
     let counter = 0;
