@@ -39,7 +39,10 @@ const EmergencyPage: React.ComponentType = () => {
     {
       text: 'Hide',
       color: 'white',
-      click: () => switchToEmergency(false),
+      click: () => {
+        switchToEmergency(false);
+        switchWindow();
+      },
     },
     {
       text: 'Audio/Video Issues',

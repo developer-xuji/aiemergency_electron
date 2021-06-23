@@ -99,7 +99,7 @@ const createWindow = async () => {
       mainWindow.show();
       mainWindow.focus();
     }
-    mainWindow.webContents.closeDevTools();
+    // mainWindow.webContents.closeDevTools();
   });
 
   mainWindow.on('closed', () => {

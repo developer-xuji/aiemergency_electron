@@ -12,6 +12,7 @@ const PEARSON_AI_ENGLISH_GREEN = '#D1F7C4';
 const RISE_BLUE = '#8aaaf3';
 const SHANE_BLUE = '#D0F0FD';
 const AI_PLAY_COSTUME = '#F99DE2';
+const BANGBANGTANG = '#fee2d5';
 
 const Layout = styled.div`
   flex: 2.5;
@@ -30,6 +31,8 @@ const getUniformStyle = (uniform: string) => {
       return SHANE_BLUE;
     case 'Ai Play Costume':
       return AI_PLAY_COSTUME;
+    case 'BangBangTang with Ai English Green':
+      return BANGBANGTANG;
     default:
       return 'white';
   }

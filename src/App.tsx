@@ -127,7 +127,7 @@ export default function App() {
         const params = {
           currentClass: classList[0],
           setTimeLeft: (timeBeforClass: number) => setTimeLeft(timeBeforClass),
-          onPanelSwitch: () => switchWindow(),
+          onPanelSwitch: () => (hidden ? 0 : switchWindow()),
           checkStudioBeforeClass: () => checkStudioBeforeClass(),
           getClassList: (studioID: string) => getClassList(studioID),
           timings: [

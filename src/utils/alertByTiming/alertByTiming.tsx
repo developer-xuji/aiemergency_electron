@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-case-declarations */
 /* eslint-disable import/extensions */
@@ -33,6 +34,9 @@ const alertByTiming = (params: any) => {
     YELLOW,
   ] = params.constents;
 
+  console.log('Timing: ', timing);
+  console.log('CurrentTiming', currentTiming);
+
   switch (timing) {
     // 上课前超过准备 发送蓝色警报
     case PREPARING:
@@ -62,7 +66,7 @@ const alertByTiming = (params: any) => {
       break;
     // 到达上课前提示时间 自动弹出紧急按钮 (非Multi版本)
     case NOTICE_BEFORE_CLASS:
-      setCurrentTiming(WARNING);
+      setCurrentTiming(NOTICE_BEFORE_CLASS);
       const starsIndex = currentClass.specialClass.indexOf(THREE_STARS);
       if (starsIndex >= 0) break;
       params.onPanelSwitch();
@@ -70,12 +74,12 @@ const alertByTiming = (params: any) => {
       break;
     // 开始上课后 判断studio是否已经ready，没有则发送红色警报
     case CLASS_BEGIN:
-      setCurrentTiming(WARNING);
+      setCurrentTiming(CLASS_BEGIN);
       params.checkStudioBeforeClass();
       break;
     // 下课时刷新classList
     case CLASS_END:
-      setCurrentTiming(WARNING);
+      setCurrentTiming(CLASS_END);
       params.getClassList(AIRTABLE_STUDIO);
       break;
     default:
