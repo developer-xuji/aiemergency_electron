@@ -7,19 +7,21 @@ import getStage from '../../../../utils/getStage';
 import setAlert from '../../../../functions/setAlert';
 import { BACKEND_URL } from '../../../../config';
 import { ALERT_URL, ALERT_LEVEL } from '../../../../constants';
-import runCMDCommand from '../../../../utils/runCMDCommand';
 
 const { GREEN } = ALERT_LEVEL;
 
 const Layout = styled.div`
-  flex: 1;
+  flex: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5vh;
 `;
 
 const EmergencyButton = styled.button`
-  flex: 1;
+  flex: ${(props) => (props.value === 'Emergency' ? '1' : '2')};
   background: ${(props) =>
-    props.value === 'Emergency' ? '#ff5555' : '#7dfab1'};
+    props.value === 'Emergency' ? '#f26c4f' : '#66ac64'};
 
   border: none;
   appearance: none;
@@ -28,17 +30,22 @@ const EmergencyButton = styled.button`
     0px 18px 88px -4px rgba(24, 39, 75, 0.14);
   transition: transform ease-in 0.1s;
   cursor: pointer;
+  width: 50vw;
+  border-radius: ${(props) => (props.value === 'Emergency' ? '17px' : '30px')};
+  margin-bottom: 2vh;
+  border: 2px solid white;
+  color: white;
 `;
 
 const ButtonArea: React.ComponentType = () => {
-  const { switchToEmergency, currentClass } =
+  const { switchToEmergency, currentClass, switchWindow } =
     React.useContext(ButtonAreaContext);
   const onEmergencyClick = () => {
-    // runCMDCommand('.\\scripts\\playAudio.vbs');
     switchToEmergency(true);
   };
 
   const onReadyClick = () => {
+    switchWindow();
     const stage = getStage(currentClass);
     setAlert(
       BACKEND_URL + ALERT_URL,

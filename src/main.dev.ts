@@ -83,6 +83,7 @@ const createWindow = async () => {
     alwaysOnTop: true,
     frame: false,
     minimizable: false,
+    transparent: true,
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);

@@ -12,13 +12,18 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  align-items: center;
 `;
 const OptionButton = styled.button`
-  height: 20vh;
+  height: 18vh;
+  width: 80vw;
   font-size: 20px;
   text-align: center;
   background-color: ${(props) => props.color};
   color: ${(props) => (props.color === 'white' ? 'black' : 'white')};
+  margin: 2vh;
+  border: 2px solid ${(props) => (props.color === 'white' ? 'black' : 'white')};
+  border-radius: 20px;
 `;
 
 const EmergencyPage: React.ComponentType = () => {

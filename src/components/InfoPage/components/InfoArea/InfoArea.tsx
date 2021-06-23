@@ -16,7 +16,8 @@ const BANGBANGTANG = '#fee2d5';
 
 const Layout = styled.div`
   flex: 2.5;
-  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const getUniformStyle = (uniform: string) => {
@@ -54,28 +55,54 @@ const InfoArea: React.ComponentType = () => {
   );
 
   const Text = styled.div`
-    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 10vw;
+    padding-right: 10vw;
     font-size: 20px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1vh;
   `;
 
-  const UNIFORM = styled.div`
-    color: ${(props: any) => getUniformStyle(props.color)};
-    font-size: 30px;
+  const Title = styled.div`
+    width: 40vw;
+  `;
+
+  const Constent = styled.div`
+    width: 40vw;
+    color: ${(props: any) => props.color};
   `;
 
   return (
     <Layout>
-      <UNIFORM color={getText(currentClass.uniform)}>
-        Uniform: {getText(currentClass.uniform)}
-      </UNIFORM>
-      <Text>Studio: {getText(currentClass.studio)}</Text>
-      <Text>Teacher: {getText(currentClass.teacher)}</Text>
-      <Text>
-        Start time:{' '}
-        {getText(`${currentClass.startHour}:${currentClass.startMinute}`)}
+      <Text color={getText(currentClass.uniform)}>
+        <Title id="Uniform">Uniform: </Title>
+        <Constent id="Uniform" color={getUniformStyle(currentClass.uniform)}>{getText(currentClass.uniform)}</Constent>
       </Text>
-      <Text>Topic: {getText(currentClass.topic)}</Text>
-      <Text>Time To Class: {timeToClass < 0 ? 0 : timeToClass} mins</Text>
+      <Text>
+        <Title id="Studio">Studio:</Title>
+        <Constent id="Studio">{getText(currentClass.studio)}</Constent>
+      </Text>
+      <Text>
+        <Title id="Teacher">Teacher:</Title>
+        <Constent id="Teacher">{getText(currentClass.teacher)}</Constent>
+      </Text>
+      <Text>
+        <Title id="start_time">Start time:</Title>
+        <Constent id="start_time">
+          {getText(`${currentClass.startHour}:${currentClass.startMinute}`)}
+        </Constent>
+      </Text>
+      <Text>
+        <Title id="Topic">Topic:</Title>
+        <Constent id="Topic">{getText(currentClass.topic)}</Constent>
+      </Text>
+      <Text>
+        <Title id="time_to_class">Time To Class:</Title>
+        <Constent id="time_to_class">{timeToClass < 0 ? 0 : timeToClass} mins</Constent>
+      </Text>
     </Layout>
   );
 };

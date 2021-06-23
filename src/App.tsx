@@ -38,6 +38,16 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const Log = styled.div`
+  position: fixed;
+  background-image: url('../assets/AiEnglish_logo.png');
+  background-size: 50px 50px;
+  right: 0px;
+  bottom: 0px;
+  width: 50px;
+  height: 50px;
+`;
 const { RED, YELLOW, WHITE, BLUE } = ALERT_LEVEL;
 const { PREPARING, WARNING, NOTICE_BEFORE_CLASS, CLASS_BEGIN, CLASS_END } =
   TIMING;
@@ -180,6 +190,7 @@ export default function App() {
           <EmergencyPage />
         </EmergencyPageContext.Provider>
       )}
+      {!hidden && <Log />}
     </Layout>
   );
 }

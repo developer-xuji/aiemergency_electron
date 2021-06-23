@@ -5,6 +5,7 @@ import { initClassInfo } from '../../../../utils/classInfo/classInfo';
 const ButtonAreaContext = createContext({
   switchToEmergency: (page: boolean) => page,
   currentClass: initClassInfo(),
+  switchWindow: () => {},
 });
 
 export default ButtonAreaContext;

@@ -1,7 +1,7 @@
 export const UNACTIVE_WINDOW_WIDTH = 50;
 export const UNACTIVE_WINDOW_HEIGHT = 50;
-export const WINDOW_WIDTH = 300;
-export const WINDOW_HEIGHT = 420;
+export const WINDOW_WIDTH = 450;
+export const WINDOW_HEIGHT = 450;
 
 export const TIMING = {
   NORMAL: 0,
@@ -26,3 +26,4 @@ export const STUDIO_URL = '/api/v1/operation/studio';
 export const ALERT_URL = '/api/v1/operation/alert';
 export const CLASSTABLE = '/api/classTimetable';
 export const STUDIO_CONFIG = '/api/v1/operation/studioConfig';
+export const VERSION = '3.0.1';

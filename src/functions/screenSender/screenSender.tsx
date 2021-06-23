@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import { desktopCapturer } from 'electron';
 import os from 'os';
+// import fs from 'fs';
 import fetchData from '../fetchData';
 
 const screenSender = () => {
   desktopCapturer
     .getSources({
       types: ['screen'],
-      thumbnailSize: { height: 1080, width: 1920 },
+      thumbnailSize: { height: 300, width: 400 },
     })
     .then(async (sources) => {
       // fs.writeFileSync('123.png', sources[1].thumbnail.toPNG());

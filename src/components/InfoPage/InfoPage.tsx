@@ -11,12 +11,16 @@ import ControlArea from './components/ControlArea';
 import ControlAreaContext from './components/ControlArea/ControlAreaContext';
 
 import { initClassInfo } from '../../utils/classInfo/classInfo';
+import { VERSION } from '../../constants';
 
 const Layout = styled.div`
-  background: black;
   height: 100vh;
   display: flex;
   flex-direction: column;
+`;
+const Title = styled.div`
+  font-size: 15px;
+  color: gray;
 `;
 
 const InfoPage: React.ComponentType = () => {
@@ -31,6 +35,7 @@ const InfoPage: React.ComponentType = () => {
 
   return (
     <Layout>
+      {!isHidden && <Title>{VERSION}</Title>}
       <ControlAreaContext.Provider
         value={{ actived: !isHidden, onAreaClick: switchWindow }}
       >
@@ -42,7 +47,7 @@ const InfoPage: React.ComponentType = () => {
             <InfoArea />
           </InfoAreaContext.Provider>
           <ButtonAreaContext.Provider
-            value={{ switchToEmergency, currentClass }}
+            value={{ switchToEmergency, currentClass, switchWindow }}
           >
             <ButtonArea />
           </ButtonAreaContext.Provider>

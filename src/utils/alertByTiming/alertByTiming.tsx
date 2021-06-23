@@ -6,7 +6,7 @@ import getTiming from '../getTiming';
 import getCurrentTime from '../getCurrentTime';
 import getTimeDifference from '../getTimeDifference';
 import setAlert from '../../functions/setAlert';
-import runCMDCommand from '../runCMDCommand';
+// import runCMDCommand from '../runCMDCommand';
 import { currentTiming, setCurrentTiming } from '../../classData';
 
 const alertByTiming = (params: any) => {
@@ -27,7 +27,7 @@ const alertByTiming = (params: any) => {
   const [
     BACKEND_URL,
     ALERT_URL,
-    AUDIO_FILE,
+    // AUDIO_FILE,
     AIRTABLE_STUDIO,
     THREE_STARS,
     BLUE,
@@ -70,7 +70,7 @@ const alertByTiming = (params: any) => {
       const starsIndex = currentClass.specialClass.indexOf(THREE_STARS);
       if (starsIndex >= 0) break;
       params.onPanelSwitch();
-      runCMDCommand(AUDIO_FILE);
+      // runCMDCommand(AUDIO_FILE);
       break;
     // 开始上课后 判断studio是否已经ready，没有则发送红色警报
     case CLASS_BEGIN:
