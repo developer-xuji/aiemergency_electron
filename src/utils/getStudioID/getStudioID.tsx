@@ -11,6 +11,7 @@ const hostName: string = os.hostname();
 const studioNumber: string =
   hostName.slice(8, 9) === '0' ? hostName.slice(9, 10) : hostName.slice(8, 10);
 const studioID: string = STUDIO_TYPE + studioNumber;
+// const studioID = 'dorcas3';
 
 // Multi版本
 // const studioID: string = MULTI_TYPE+hostName.slice(5, 8);

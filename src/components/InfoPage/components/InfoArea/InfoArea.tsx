@@ -40,7 +40,7 @@ const getUniformStyle = (uniform: string) => {
 };
 
 const getText = (value: string) => {
-  if (value === '') return 'Not Ready';
+  if (value === '' || value === ':') return 'Not Ready';
   return value;
 };
 

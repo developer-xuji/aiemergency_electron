@@ -41,7 +41,8 @@ const ButtonArea: React.ComponentType = () => {
   const { switchToEmergency, currentClass, switchWindow } =
     React.useContext(ButtonAreaContext);
   const onEmergencyClick = () => {
-    switchToEmergency(true);
+    if (currentClass && currentClass.id && currentClass.id !== '')
+      switchToEmergency(true);
   };
 
   const onReadyClick = () => {

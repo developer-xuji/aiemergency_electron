@@ -32,7 +32,7 @@ import {
 import setAlert from './functions/setAlert';
 import { BACKEND_URL } from './config';
 import alertByTiming from './utils/alertByTiming';
-import screenSender from './functions/screenSender';
+import screen from './functions/screenSender/screenSender';
 
 const Layout = styled.div`
   display: flex;
@@ -54,8 +54,9 @@ const { PREPARING, WARNING, NOTICE_BEFORE_CLASS, CLASS_BEGIN, CLASS_END } =
 const ONE_MINUTE = 60000;
 const TEN_SECONDS = 10000;
 const THREE_STARS = '⭐⭐⭐';
-const AUDIO_FILE = '.\\scripts\\playAudio.vbs';
+// const AUDIO_FILE = '.\\scripts\\playAudio.vbs';
 const HOSTNAME: string = nodeOs.hostname();
+const { screenSender, cleanScreenShot } = screen;
 
 export default function App() {
   const [updateList, setUpdateList] = React.useState<ClassInfo[]>([]);
@@ -150,7 +151,7 @@ export default function App() {
           constents: [
             BACKEND_URL,
             ALERT_URL,
-            AUDIO_FILE,
+            // AUDIO_FILE,
             getStudioID,
             THREE_STARS,
             BLUE,
@@ -163,7 +164,15 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  setInterval(() => screenSender(), TEN_SECONDS);
+  useEffect(() => {
+    console.log('UpdateList: ', updateList);
+    if (updateList.length > 0) {
+      const screenInterval = setInterval(() => screenSender(), 1000);
+      return () => clearInterval(screenInterval);
+    }
+    cleanScreenShot();
+    return () => {};
+  }, [updateList, updateList.length]);
 
   return (
     <Layout>
